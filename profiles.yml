@@ -1,0 +1,15 @@
+# example profiles.yml file
+ods:
+  target: dev
+  outputs:
+    dev:
+      type: sqlserver
+      driver: 'ODBC Driver 18 for SQL Server'
+      server: 'bitipis'
+      port: 1433
+      database: dbt_container_test_db
+      schema: dbo
+      UID: dbt
+      PWD: '123'
+      windows_login: False
+      trust_cert: True
