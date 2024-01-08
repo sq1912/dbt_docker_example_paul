@@ -57,13 +57,6 @@ RUN pip install -r requirements.txt
 
 ####### until here, there's no Diference between start_job.Dockerfile and this File!
 
-# build static pages
-RUN dbt docs generate 
+RUN chmod 0755 entrypoint.sh
 
-# serve site
-FROM nginx:stable-alpine
-
-# COPY Files from target (previously generated dbt docs)
-COPY --from=msodbc18 /opt/dbtproj/target/index.html /opt/dbtproj/target/manifest.json /opt/dbtproj/target/catalog.json /opt/dbtproj/target/run_results.json /usr/share/nginx/html/
-
-EXPOSE 80
+ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
